@@ -1,0 +1,4 @@
+geopandas==0.12.2
+leafmap==0.18.3
+streamlit==1.20.0
+~treamlit==1.19.0
