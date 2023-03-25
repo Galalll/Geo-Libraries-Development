@@ -1,7 +1,8 @@
 import streamlit as st
 import geopandas as gpd
 import leafmap.foliumap as lf
-
+st.title("Buffer App. ")
+st.write("## In this page you need to upload two GeoJson files and specify the Buffer distance. ")
 uploaded_file = st.file_uploader("Choose First GeoJson a file",accept_multiple_files=False,type='geojson')
 uploaded_file2 = st.file_uploader("Choose Second GeoJson a file",accept_multiple_files=False,type='geojson')
 BufferValue=st.text_input("inter your Buffer value in meters")

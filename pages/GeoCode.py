@@ -23,10 +23,10 @@ def geocode_address(address):
         return None, None
 
 
-def display_map(lat, lon):
+def display_map(lat, lon , address):
     m = leafmap.Map()
     if lat and lon:
-        m.add_marker(location=[lat, lon], popup="Portland, OR")
+        m.add_marker(location=[lat, lon], popup=f"{address}")
         # m.add_marker
         # m.center = (lat, lon)
     return m.to_streamlit(height=500)
@@ -36,12 +36,13 @@ def download_geojson(df):
     gdf = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.longitude, df.latitude))
     geojson_str = gdf.to_json()
     b64 = base64.b64encode(geojson_str.encode()).decode()
-    href = f'<a href="data:application/json;base64,{b64}" download="geocoded_data.geojson">Download GeoJSON File</a>'
+    href = f'<a href="data:application/json;base64,{b64}" download="geocoded_data.geojson">Download GeoJSON. File</a>'
     return href
 
 
 def main():
-    st.title("Geocoding Application in Python")
+    st.title("Geocoding App.")
+    st.write("## This page will allow you to search for any contry and download GeoJson file includes its location ")
     st.markdown("Enter an address to search for")
 
     address = st.text_input("Enter an address")
@@ -54,7 +55,7 @@ def main():
         if lat and lon:
             # st.success(f"Location found: {lat}, {lon}")
             st.markdown(download_geojson(pd.DataFrame({'latitude': [lat], 'longitude': [lon]})), unsafe_allow_html=True)
-            st.write(display_map(lat, lon))
+            st.write(display_map(lat, lon,address))
         else:
             st.error("Could not find location for entered address")
 
