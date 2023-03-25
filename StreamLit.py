@@ -17,7 +17,7 @@ st.sidebar.success("Select a demo above.")
 st.markdown(
     """
     ## This is my Demo For GeoTools Project that I made as Finall Assessment for my course.
-    ### <=== Please chose any Demo from this list.
+    ### <=== Please choose any Demo from this list.
     GitHub Repo : [Galalll/Geo-Libraries-Development.git](https://github.com/Galalll/Geo-Libraries-Development.git)
 """
 )
